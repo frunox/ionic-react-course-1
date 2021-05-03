@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { IonButton, IonToast } from '@ionic/react';
+import { play as playIcon } from 'ionicons/icons';
+import {
+  IonApp,
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonTitle,
+  IonToast,
+  IonToolbar,
+} from '@ionic/react';
 
 function App() {
   const [showToast, setShowToast] = useState(false);
@@ -9,15 +19,20 @@ function App() {
     setTimeout(() => setShowToast(false), 1500);
   };
   return (
-    <div>
-      <header>
-        <h1>My App</h1>
-      </header>
-      <main>
-        <IonButton onClick={handleClick}>Click Me</IonButton>
+    <IonApp>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>My App</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+        <IonButton onClick={handleClick}>
+          <IonIcon icon={playIcon} slot="start" />
+          Click Me
+        </IonButton>
         <IonToast isOpen={showToast} message="Hello World!" />
-      </main>
-    </div>
+      </IonContent>
+    </IonApp>
   );
 }
 
